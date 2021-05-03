@@ -151,6 +151,9 @@ class PuppetStrings::Yard::CodeObjects::Type < PuppetStrings::Yard::CodeObjects:
     # just return params if there are no providers
     return @parameters if providers.empty?
 
+    # Return nothing in the event the type has no parameters defined:
+    return [] if @parameters.nil?
+
     # return existing params if we have already added provider
     return @parameters if @parameters.any? { |p| p.name == 'provider' }
 
